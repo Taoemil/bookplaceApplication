@@ -1,14 +1,17 @@
 import React from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { View, Text, StyleSheet, Button } from 'react-native';
 
-const HomeScreen = () => {
-  return (
-    <View style={styles.container}>
-      <Text style={styles.title}>Welcome to Book Marketplace!</Text>
-      {/* You can add more UI elements here as per your requirements */}
-    </View>
-  );
-}
+const HomeScreen = ({ navigation }) => {
+    return (
+      <View style={styles.container}>
+        <Text style={styles.title}>Welcome to Book Marketplace!</Text>
+  
+        <Button title="Go to Login" onPress={() => navigation.navigate('Login')} />
+        <Button title="Go to User Profile" onPress={() => navigation.navigate('Profile')} />
+        <Button title="Go to Book Page" onPress={() => navigation.navigate('BookPage')} />
+      </View>
+    );
+  }
 
 const styles = StyleSheet.create({
   container: {

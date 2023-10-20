@@ -1,10 +1,13 @@
 import React from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { View, Text, StyleSheet, Button } from 'react-native';
 
-const LoginScreen = () => {
+const LoginScreen = ({ navigation }) => {
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Login or create user!</Text>
+      <Text style={styles.title}>Login or create!</Text>
+      <Button title="Go to Login" onPress={() => navigation.navigate('HomeScreen')} />
+        <Button title="Go to User Profile" onPress={() => navigation.navigate('Profile')} />
+        <Button title="Go to Book Page" onPress={() => navigation.navigate('BookPage')} />
       {/* You can add more UI elements here as per your requirements */}
     </View>
   );

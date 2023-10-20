@@ -1,25 +1,22 @@
 import React from 'react';
-import { StyleSheet, View } from 'react-native';
-import HomeScreen from './components/Homescreen';  // Import the HomeScreen component
-import LoginScreen from './components/Loginscreen';  // Import the loginscreen component
-import UserProfile from './components/Userprofile';  // Import the userprofile component
-import BookPage from './components/Bookpage';  // Import the bookpage component
+import { NavigationContainer } from '@react-navigation/native'; 
+import { createStackNavigator } from '@react-navigation/stack';
+import HomeScreen from './components/Homescreen';
+import LoginScreen from './components/Loginscreen';
+import UserProfile from './components/Userprofile';
+import BookPage from './components/Bookpage';
 
+const Stack = createStackNavigator();
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <HomeScreen />
-      <LoginScreen />
-      <UserProfile />
-      <BookPage />
-    </View>
+    <NavigationContainer>
+      <Stack.Navigator initialRouteName="Home">
+        <Stack.Screen name="Home" component={HomeScreen} options={{ title: 'Book Marketplace' }} />
+        <Stack.Screen name="Login" component={LoginScreen} options={{ title: 'Login' }} />
+        <Stack.Screen name="Profile" component={UserProfile} options={{ title: 'User Profile' }} />
+        <Stack.Screen name="BookPage" component={BookPage} options={{ title: 'Book Details' }} />
+      </Stack.Navigator>
+    </NavigationContainer>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-  },
-});
