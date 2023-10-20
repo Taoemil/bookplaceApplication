@@ -1,14 +1,58 @@
-import React from 'react';
-import { View, Text, StyleSheet, Button } from 'react-native';
+import React, { useState } from 'react';
+import { View, Text, StyleSheet, TextInput, Button, Alert } from 'react-native';
+import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
 
 const LoginScreen = ({ navigation }) => {
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+
+  const auth = getAuth(); // Getting the auth instance
+
+  const handleSignUp = () => {
+    createUserWithEmailAndPassword(auth, email, password)
+      .then((userCredential) => {
+        // Successfully signed up
+        Alert.alert('Signed up successfully!');
+      })
+      .catch(error => {
+        // Error signing up
+        Alert.alert('Error', error.message);
+      });
+  }
+
+  const handleLogin = () => {
+    signInWithEmailAndPassword(auth, email, password)
+      .then((userCredential) => {
+        // Successfully logged in
+        Alert.alert('Logged in successfully!');
+      })
+      .catch(error => {
+        // Error logging in
+        Alert.alert('Error', error.message);
+      });
+  }
+
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Login or create!</Text>
-      <Button title="Go to Login" onPress={() => navigation.navigate('HomeScreen')} />
-        <Button title="Go to User Profile" onPress={() => navigation.navigate('Profile')} />
-        <Button title="Go to Book Page" onPress={() => navigation.navigate('BookPage')} />
-      {/* You can add more UI elements here as per your requirements */}
+      <TextInput
+        style={styles.input}
+        placeholder="Email"
+        value={email}
+        onChangeText={setEmail}
+      />
+      <TextInput
+        style={styles.input}
+        placeholder="Password"
+        value={password}
+        onChangeText={setPassword}
+        secureTextEntry
+      />
+      <Button title="Sign Up" onPress={handleSignUp} />
+      <Button title="Login" onPress={handleLogin} />
+
+      <Button title="Go to homescreen" onPress={() => navigation.navigate('HomeScreen')} />
+      <Button title="Go to User Profile" onPress={() => navigation.navigate('Profile')} />
+      <Button title="Go to Book Page" onPress={() => navigation.navigate('BookPage')} />
     </View>
   );
 }
@@ -17,14 +61,15 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#F5FCFF',
+    padding: 20
   },
-  title: {
-    fontSize: 20,
-    textAlign: 'center',
-    margin: 10,
-  },
+  input: {
+    height: 40,
+    borderColor: 'gray',
+    borderWidth: 1,
+    marginBottom: 10,
+    padding: 5
+  }
 });
 
 export default LoginScreen;
