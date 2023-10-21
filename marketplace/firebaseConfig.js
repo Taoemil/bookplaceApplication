@@ -1,10 +1,10 @@
 import { initializeApp, getApps } from "firebase/app";
-import { getAuth } from "firebase/auth"; // <-- Add this line
-
-// ... [rest of the code]
+import { getAuth } from "firebase/auth";
 
 
-// Your web app's Firebase configuration
+
+
+// Firebase configuration
 const firebaseConfig = {
   apiKey: "AIzaSyB2D_V7e5Srro7HM3XIwbqrZr-7hIwanGk",
   authDomain: "bookplace-fe746.firebaseapp.com",
@@ -18,7 +18,7 @@ const firebaseConfig = {
 let firebaseApp = initializeApp(firebaseConfig);
 console.log("Firebase has been initialized");
 
-// Check if Firebase is initialized
+// Console.log if Firebase is initialized.
 if (getApps().length > 0) {
   console.log("Firebase is initialized. Apps:", getApps());
 } else {
