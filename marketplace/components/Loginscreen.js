@@ -28,6 +28,8 @@ const LoginScreen = ({ navigation }) => {
       .then((userCredential) => {
         // Successfully logged in
         Alert.alert('Logged in successfully!');
+        navigation.navigate('Home');
+
       })
       .catch(error => {
         // Error logging in
@@ -55,11 +57,6 @@ const LoginScreen = ({ navigation }) => {
       
      <Button title="Sign Up" onPress={handleSignUp} />
       <Button title="Login" onPress={handleLogin} /> 
-
-
-      <Button title="Go to homescreen" onPress={() => navigation.navigate('HomeScreen')} />
-      <Button title="Go to User Profile" onPress={() => navigation.navigate('Profile')} />
-      <Button title="Go to Book Page" onPress={() => navigation.navigate('BookPage')} />
     </View>
   );
 }

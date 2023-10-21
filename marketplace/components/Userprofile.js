@@ -5,10 +5,7 @@ const UserProfile = ({ navigation }) => {
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Here is your profile!</Text>
-      <Button title="Go to Login" onPress={() => navigation.navigate('Login')} />
-        <Button title="Go to User Profile" onPress={() => navigation.navigate('HomeScreen')} />
-        <Button title="Go to Book Page" onPress={() => navigation.navigate('BookPage')} />
-      {/* You can add more UI elements here as per your requirements */}
+        <Button title="Go to homescreen" onPress={() => navigation.navigate('Home')} />
     </View>
   );
 }
