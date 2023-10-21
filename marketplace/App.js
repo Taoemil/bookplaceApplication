@@ -1,27 +1,14 @@
 import React from 'react';
 import { NavigationContainer } from '@react-navigation/native'; 
 import { createStackNavigator } from '@react-navigation/stack';
+
+// Import firebaseConfig.js first to ensure Firebase is initialized
+import './firebaseConfig'; 
+
 import HomeScreen from './components/Homescreen';
 import LoginScreen from './components/Loginscreen';
 import UserProfile from './components/Userprofile';
 import BookPage from './components/Bookpage';
-// Import the functions you need from the SDKs you need
-import { initializeApp } from "firebase/app";
-
-
-// Your web app's Firebase configuration
-const firebaseConfig = {
-  apiKey: "AIzaSyB2D_V7e5Srro7HM3XIwbqrZr-7hIwanGk",
-  authDomain: "bookplace-fe746.firebaseapp.com",
-  projectId: "bookplace-fe746",
-  storageBucket: "bookplace-fe746.appspot.com",
-  messagingSenderId: "547846937761",
-  appId: "1:547846937761:web:d059ec5bed7683066ba4e0"
-};
-
-// Initialize Firebase
-const app = initializeApp(firebaseConfig);
-
 
 const Stack = createStackNavigator();
 

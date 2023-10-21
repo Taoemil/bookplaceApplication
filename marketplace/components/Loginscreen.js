@@ -1,12 +1,15 @@
 import React, { useState } from 'react';
 import { View, Text, StyleSheet, TextInput, Button, Alert } from 'react-native';
+import firebaseApp from '../firebaseConfig';
 import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
 
 const LoginScreen = ({ navigation }) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
-  const auth = getAuth(); // Getting the auth instance
+
+  
+  const auth = getAuth(firebaseApp);
 
   const handleSignUp = () => {
     createUserWithEmailAndPassword(auth, email, password)
@@ -32,6 +35,8 @@ const LoginScreen = ({ navigation }) => {
       });
   }
 
+  
+
   return (
     <View style={styles.container}>
       <TextInput
@@ -47,8 +52,10 @@ const LoginScreen = ({ navigation }) => {
         onChangeText={setPassword}
         secureTextEntry
       />
-      <Button title="Sign Up" onPress={handleSignUp} />
-      <Button title="Login" onPress={handleLogin} />
+      
+     <Button title="Sign Up" onPress={handleSignUp} />
+      <Button title="Login" onPress={handleLogin} /> 
+
 
       <Button title="Go to homescreen" onPress={() => navigation.navigate('HomeScreen')} />
       <Button title="Go to User Profile" onPress={() => navigation.navigate('Profile')} />
