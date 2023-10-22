@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { View, Text, TextInput, Button, StyleSheet } from 'react-native';
+import { View, Text, TextInput, Button, StyleSheet, Alert } from 'react-native'; // Added Alert here
 import { getAuth, onAuthStateChanged } from 'firebase/auth';
 import { getFirestore, doc, setDoc, getDoc } from 'firebase/firestore';
 
@@ -28,11 +28,26 @@ const UserProfile = () => {
   }, [db]);
 
   const handleSave = async () => {
+    console.log("handleSave called");  // Diagnostic log
+
     if (user) {
       const userRef = doc(db, 'users', user.uid);
-      await setDoc(userRef, { bio: bio }, { merge: true });
+      
+      try {
+        await setDoc(userRef, { bio: bio }, { merge: true });
+        
+        // Display an alert
+        Alert.alert('Success', 'Your information has been saved!');
+      } catch (error) {
+        console.error("Error saving user data:", error);
+        Alert.alert('Error', 'There was a problem saving your data.');
+      }
+      
+    } else {
+      Alert.alert('Error', 'User is not authenticated.');
     }
-  };
+};
+
 
   return (
     <View style={styles.container}>
@@ -40,7 +55,7 @@ const UserProfile = () => {
       <TextInput
         value={bio}
         onChangeText={setBio}
-        placeholder="Tell something about yourself"
+        placeholder="User bio"
         style={styles.input}
       />
       <Button title="Save" onPress={handleSave} />
