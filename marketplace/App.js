@@ -37,10 +37,10 @@ export default function App() {
   return (
     <NavigationContainer>
       <Stack.Navigator initialRouteName={currentUser ? "Home" : "Login"}>
-        <Stack.Screen name="Home" component={HomeScreen} options={{ title: 'Homescreen' }} />
+        <Stack.Screen name="Home" component={HomeScreen} options={{ title: 'Hjem' }} />
         <Stack.Screen name="Login" component={LoginScreen} options={{ title: 'Login' }} />
-        <Stack.Screen name="Profile" component={UserProfile} options={{ title: 'My Profile' }} />
-        <Stack.Screen name="BookPage" component={BookPage} options={{ title: 'Buy or sell books' }} />
+        <Stack.Screen name="Profile" component={UserProfile} options={{ title: 'Min profil' }} />
+        <Stack.Screen name="BookPage" component={BookPage} options={{ title: 'Sæt en bog til salg' }} />
       </Stack.Navigator>
     </NavigationContainer>
   );
