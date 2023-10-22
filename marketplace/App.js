@@ -10,6 +10,8 @@ import HomeScreen from './components/Homescreen';
 import LoginScreen from './components/Loginscreen';
 import UserProfile from './components/Userprofile';
 import BookPage from './components/Bookpage';
+import BookMaps from './components/BookMaps';
+
 
 const Stack = createStackNavigator();
 
@@ -41,6 +43,8 @@ export default function App() {
         <Stack.Screen name="Login" component={LoginScreen} options={{ title: 'Login' }} />
         <Stack.Screen name="Profile" component={UserProfile} options={{ title: 'Min profil' }} />
         <Stack.Screen name="BookPage" component={BookPage} options={{ title: 'Sæt en bog til salg' }} />
+        <Stack.Screen name="BookMaps" component={BookMaps} options={{ title: 'See all listed books' }} />
+
       </Stack.Navigator>
     </NavigationContainer>
   );

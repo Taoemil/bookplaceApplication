@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { View, TextInput, Button, StyleSheet } from 'react-native';
 import { Picker } from '@react-native-picker/picker';
 import { getFirestore, collection, addDoc } from 'firebase/firestore';
+import { getAuth } from 'firebase/auth'; // Import for authentication
 
 const BookPage = () => {
     const [title, setTitle] = useState('');
@@ -10,6 +11,7 @@ const BookPage = () => {
     const [address, setAddress] = useState('');
 
     const db = getFirestore();
+    const auth = getAuth(); // Initialize authentication
 
     const handleSubmit = async () => {
         if (!title || !price || !quality || !address) {
@@ -19,10 +21,23 @@ const BookPage = () => {
         }
 
         try {
+            const currentUser = auth.currentUser; // Get the current logged-in user
+
+            if (!currentUser) {
+                alert('Please log in before adding a book.');
+                return;
+            }
+
             const booksRef = collection(db, 'books');
-            await addDoc(booksRef, { title, price, quality, address });
+            await addDoc(booksRef, { 
+                title, 
+                price, 
+                quality, 
+                address,
+                userId: currentUser.uid // Link the book to the user
+            });
             alert('Book added successfully!');
-            console.log('Bog indsat i database')
+            console.log(`Bog uploaded af ${currentUser.email}`) 
 
             // Clear the input fields after submission
             setTitle('');
@@ -31,7 +46,6 @@ const BookPage = () => {
         } catch (e) {
             alert('Error adding book: ', e);
             console.log('Fejl i at indsætte bog')
-
         }
     };
 

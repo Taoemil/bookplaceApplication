@@ -6,7 +6,9 @@ const HomeScreen = ({ navigation }) => {
       <View style={styles.container}>
         <Text style={styles.title}>Welcome to Book Marketplace!</Text>
         <Button title="Go to User Profile" onPress={() => navigation.navigate('Profile')} />
-        <Button title="Go to Book Page" onPress={() => navigation.navigate('BookPage')} />
+        <Button title="Upload a book" onPress={() => navigation.navigate('BookPage')} />
+        <Button title="See all listed books" onPress={() => navigation.navigate('BookMaps')} />
+
       </View>
     );
   }
