@@ -6,7 +6,7 @@ import { getAuth } from 'firebase/auth';
 import theme from '../styling/theme'
 
 // Fjerner min API-nøgle før jeg uploader på Github
-const GEOCODING_API_KEY = 'Geocoding API nøgle her'; // Dette vil gøre at Google Maps-funktionaliteten ikke vil fungere
+const GEOCODING_API_KEY = 'AIzaSyCaeHkurWGN6xWRe3C52QT308uVijmhZYo'; // Denne nøgle er slettet for sikkerhed, og kan derfor ikke bruges
 
 // Dette stykke kode tager en text-string (adresse), og finder longitude og latitude på den givne adresse. Dermed kan man 
 const fetchCoordinates = async (address) => {
