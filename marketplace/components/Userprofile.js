@@ -38,15 +38,15 @@ const UserProfile = () => {
       try {
         await setDoc(userRef, { bio: bio }, { merge: true });
         
-        // Display an alert
-        Alert.alert('Success', 'Your information has been saved!');
+        // Fortæl brugeren hvad der sker
+        Alert.alert('Success', 'Din brugerbeskrivelse er gemt!');
       } catch (error) {
         console.error("Error saving user data:", error);
-        Alert.alert('Error', 'There was a problem saving your data.');
+        Alert.alert('Fejl', 'Din brugerbeskrivelse kunne ikke opdateres');
       }
       
     } else {
-      Alert.alert('Error', 'User is not authenticated.');
+      Alert.alert('Fejl', 'Bruger ikke autentiseret.');
     }
 };
 
@@ -58,7 +58,7 @@ return (
     <TextInput
       value={bio}
       onChangeText={setBio}
-      placeholder="User bio"
+      placeholder="Bruger bio"
       placeholderTextColor={theme.colors.textSecondary}
       style={styles.input}
     />

@@ -1,5 +1,6 @@
 // styling/theme.js
 
+// Design patterns placeres i seperat fil for at kunne sikre kontinuerligt mønster.
 const theme = {
   colors: {
     primary: '#4CAF50',   // A shade of light green for primary actions and highlights
@@ -34,7 +35,7 @@ const theme = {
   },
 };
 
-// Define styles outside of the theme object to avoid reference errors
+// Styles defineres for sig selv, for at udngå reference errors
 const styles = {
   input: {
     height: 40,
@@ -61,7 +62,6 @@ const styles = {
   },
 };
 
-// Assign the styles object to theme
 theme.styles = styles;
 
 export default theme;

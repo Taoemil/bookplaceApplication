@@ -9,17 +9,17 @@ const HomeScreen = ({ navigation }) => {
         
         <View style={styles.buttonContainer}>
             <Button 
-                title="Go to User Profile" 
+                title="Din brugerprofil" 
                 onPress={() => navigation.navigate('Profile')} 
                 color={theme.colors.primary}
             />
             <Button 
-                title="Upload a book" 
+                title="Sæt en bog til salg" 
                 onPress={() => navigation.navigate('BookPage')} 
                 color={theme.colors.primary}
             />
             <Button 
-                title="See all listed books" 
+                title="Se bøger til salg" 
                 onPress={() => navigation.navigate('BookMaps')} 
                 color={theme.colors.primary}
             />

@@ -13,7 +13,7 @@ const fetchCoordinates = async (address) => {
     `https://maps.googleapis.com/maps/api/geocode/json?address=${encodeURIComponent(address)}&key=${GEOCODING_API_KEY}`
   );
   const data = await response.json();
-  console.log("API Response:", data); // Log the full response
+  console.log("API Response:", data); // log svaret
 
   if (data.status !== 'OK') {
     throw new Error(`Geocoding API returned status: ${data.status}`);
@@ -38,14 +38,14 @@ const BookPage = () => {
   const handleSubmit = async () => {
     if (!title || !price || !quality || !address) {
       console.log('Mangler værdier')
-      alert('Please fill out all fields.');
+      alert('Venligst udfyld alle felter.');
       return;
     }
 
     const currentUser = auth.currentUser;
 
     if (!currentUser) {
-      alert('Please log in before adding a book.');
+      alert('Du skal være logget ind før du kan sælge en bog'); // burde aldrig ske
       return;
     }
 
@@ -63,19 +63,19 @@ const BookPage = () => {
         userId: currentUser.uid
       };
 
-      console.log(bookData); // Logging data before database write
+      console.log(bookData); // Logger data
 
       const booksRef = collection(db, 'books');
       await addDoc(booksRef, bookData);
       
-      alert('Book added successfully!');
-      console.log(`Bog uploaded af ${currentUser.email}`) 
+      alert('Din bog er nu sat til salg!');
+      console.log(`Bog uploaded af ${currentUser.email}`) // for overskuelighed
 
       setTitle('');
       setPrice('');
       setAddress('');
     } catch (e) {
-      alert('Error adding book: ' + e.toString());
+      alert('Annonce kunne ikke oprettes: ' + e.toString());
       console.log('Fejl i at indsætte bog')
     }
   };
@@ -87,14 +87,14 @@ const BookPage = () => {
       <TextInput
         value={title}
         onChangeText={setTitle}
-        placeholder="Book Title"
+        placeholder="Titel"
         placeholderTextColor={theme.colors.textSecondary}
         style={styles.input}
         />
       <TextInput
         value={price}
         onChangeText={setPrice}
-        placeholder="Price"
+        placeholder="Pris"
         placeholderTextColor={theme.colors.textSecondary}
         style={styles.input}
         keyboardType="numeric"
@@ -113,12 +113,12 @@ const BookPage = () => {
       <TextInput
         value={address}
         onChangeText={setAddress}
-        placeholder="Address"
+        placeholder="Addresse"
         placeholderTextColor={theme.colors.textSecondary}
         style={styles.input}
         />
       <View style={styles.buttonContainer}>
-        <Button title="Add Book" onPress={handleSubmit} color={theme.colors.primary} />
+        <Button title="Sælg bog" onPress={handleSubmit} color={theme.colors.primary} />
       </View>
     </View>
   );

@@ -16,11 +16,11 @@ const LoginScreen = ({ navigation }) => {
     createUserWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
         // Successfully signed up
-        Alert.alert('Signed up successfully!');
+        Alert.alert('Bruger oprettet!');
       })
       .catch(error => {
         // Error signing up
-        Alert.alert('Error', error.message);
+        Alert.alert('Fejl', error.message);
       });
   }
 
@@ -28,13 +28,13 @@ const LoginScreen = ({ navigation }) => {
     signInWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
         // Successfully logged in
-        Alert.alert('Logged in successfully!');
+        Alert.alert('Du er nu logget ind!');
         navigation.navigate('Home');
 
       })
       .catch(error => {
         // Error logging in
-        Alert.alert('Error', error.message);
+        Alert.alert('Fejl', error.message);
       });
   }
 
@@ -60,8 +60,8 @@ const LoginScreen = ({ navigation }) => {
       />
 
      <View style={styles.buttonContainer}>
-        <Button title="Sign Up" onPress={handleSignUp} color={theme.colors.primary} />
-        <Button title="Login" onPress={handleLogin} color={theme.colors.secondary} />
+        <Button title="Tilmeld dig!" onPress={handleSignUp} color={theme.colors.primary} />
+        <Button title="Login" onPress={handleLogin} color={theme.colors.primary} />
      </View>
     </View>
   );

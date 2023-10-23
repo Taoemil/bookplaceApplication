@@ -67,7 +67,7 @@ const BookMaps = () => {
                     setMapVisible(false);
                     setSelectedBook(null);
                 }} style={{ position: 'absolute', top: 10, right: 10 }}>
-                    <Text>Close Map</Text>
+                    <Text>Luk Google Maps</Text>
                 </TouchableOpacity>
             </SafeAreaView>
         </Modal>
@@ -77,15 +77,15 @@ const BookMaps = () => {
             keyExtractor={(item) => item.id}
             renderItem={({ item }) => (
                 <View style={styles.bookItem}>
-                    <Text>Title: {item.title}</Text>
-                    <Text>Price: {item.price}</Text>
-                    <Text>Quality: {item.quality}</Text>
+                    <Text>Titel: {item.title}</Text>
+                    <Text>Pris: {item.price}</Text>
+                    <Text>Kvalitet: {item.quality}</Text>
                     <Text>Email: {item.email}</Text>
                     <TouchableOpacity onPress={() => {
                         setSelectedBook(item);
                         setMapVisible(true);
                     }} style={styles.locationButton}>
-                        <Text>See location (opens Google Maps)</Text>
+                        <Text>Se lokation (åbner Google Maps)</Text>
                     </TouchableOpacity>
                 </View>
             )}
@@ -97,7 +97,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     padding: 20,
-    backgroundColor: theme.colors.background, // Set background color here
+    backgroundColor: theme.colors.background, 
   },
   bookItem: {
     padding: 10,
@@ -107,7 +107,7 @@ const styles = StyleSheet.create({
   },
   locationButton: {
     marginTop: 5,
-    backgroundColor: theme.colors.primary, // Updated button color here
+    backgroundColor: theme.colors.primary, 
     padding: 5,
     alignItems: 'center',
   },
