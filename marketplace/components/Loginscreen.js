@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { View, Text, StyleSheet, TextInput, Button, Alert } from 'react-native';
 import firebaseApp from '../firebaseConfig';
 import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
+import theme from '../styling/theme'
 
 const LoginScreen = ({ navigation }) => {
   const [email, setEmail] = useState('');
@@ -41,22 +42,27 @@ const LoginScreen = ({ navigation }) => {
 
   return (
     <View style={styles.container}>
+      <Text style={styles.title}>Login</Text>
       <TextInput
         style={styles.input}
         placeholder="Email"
+        placeholderTextColor={theme.colors.textSecondary}
         value={email}
         onChangeText={setEmail}
       />
       <TextInput
         style={styles.input}
         placeholder="Password"
+        placeholderTextColor={theme.colors.textSecondary}
         value={password}
         onChangeText={setPassword}
         secureTextEntry
       />
-      
-     <Button title="Sign Up" onPress={handleSignUp} />
-      <Button title="Login" onPress={handleLogin} /> 
+
+     <View style={styles.buttonContainer}>
+        <Button title="Sign Up" onPress={handleSignUp} color={theme.colors.primary} />
+        <Button title="Login" onPress={handleLogin} color={theme.colors.secondary} />
+     </View>
     </View>
   );
 }
@@ -65,14 +71,28 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: 'center',
-    padding: 20
+    padding: theme.spacing.medium,
+    backgroundColor: theme.colors.background
+  },
+  title: {
+    fontSize: theme.fontSize.xlarge,
+    color: theme.colors.textPrimary,
+    textAlign: 'center',
+    marginBottom: theme.spacing.large
   },
   input: {
-    height: 40,
-    borderColor: 'gray',
+    height: 50,
+    borderColor: theme.colors.secondary,
     borderWidth: 1,
-    marginBottom: 10,
-    padding: 5
+    borderRadius: theme.borderRadius.medium,
+    marginBottom: theme.spacing.medium,
+    padding: theme.spacing.small,
+    color: theme.colors.textPrimary,
+    backgroundColor: theme.colors.white
+  },
+  buttonContainer: {
+    flexDirection: 'row',
+    justifyContent: 'space-between'
   }
 });
 

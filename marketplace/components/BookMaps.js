@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { View, Text, FlatList, StyleSheet, TouchableOpacity, Modal, SafeAreaView } from 'react-native';
 import { getFirestore, collection, query, getDocs } from 'firebase/firestore';
 import MapView, { Marker } from 'react-native-maps';
+import theme from '../styling/theme'
+
 
 const BookMaps = () => {
   const [books, setBooks] = useState([]);
@@ -91,21 +93,21 @@ const BookMaps = () => {
     </View>
   );
 };
-
 const styles = StyleSheet.create({
   container: {
     flex: 1,
     padding: 20,
+    backgroundColor: theme.colors.background, // Set background color here
   },
   bookItem: {
     padding: 10,
     borderBottomWidth: 1,
-    borderBottomColor: 'gray',
-    marginBottom: 10,
+    borderBottomColor: theme.colors.textPrimary,
+    marginBottom: 1,
   },
   locationButton: {
     marginTop: 5,
-    backgroundColor: '#dedede',
+    backgroundColor: theme.colors.primary, // Updated button color here
     padding: 5,
     alignItems: 'center',
   },

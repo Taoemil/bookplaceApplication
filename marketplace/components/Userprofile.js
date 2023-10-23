@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { View, Text, TextInput, Button, StyleSheet, Alert } from 'react-native'; // Added Alert here
 import { getAuth, onAuthStateChanged } from 'firebase/auth';
 import { getFirestore, doc, setDoc, getDoc } from 'firebase/firestore';
+import theme from '../styling/theme'
+
 
 const UserProfile = () => {
   const [bio, setBio] = useState('');
@@ -49,31 +51,57 @@ const UserProfile = () => {
 };
 
 
-  return (
-    <View style={styles.container}>
-      <Text>Email: {user?.email}</Text>
-      <TextInput
-        value={bio}
-        onChangeText={setBio}
-        placeholder="User bio"
-        style={styles.input}
-      />
-      <Button title="Save" onPress={handleSave} />
+return (
+  <View style={styles.container}>
+    <Text style={styles.emailLabel}>Email: {user?.email}</Text>
+    <Text style={styles.bioLabel}>Din brugerbeskrivelse</Text>
+    <TextInput
+      value={bio}
+      onChangeText={setBio}
+      placeholder="User bio"
+      placeholderTextColor={theme.colors.textSecondary}
+      style={styles.input}
+    />
+    <View style={styles.buttonContainer}>
+      <Button title="Gem" onPress={handleSave} color={theme.colors.primary} />
     </View>
-  );
+  </View>
+);
 };
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    padding: 20,
+    justifyContent: 'center',
+    padding: theme.spacing.medium,
+    backgroundColor: theme.colors.background
+  },
+  emailLabel: {
+    fontSize: theme.fontSize.large,
+    color: theme.colors.textPrimary,
+    marginBottom: theme.spacing.medium,
+    marginBottom: 30
+
   },
   input: {
     borderWidth: 1,
-    borderColor: 'gray',
-    padding: 10,
-    marginVertical: 10,
+    borderColor: theme.colors.secondary,
+    borderRadius: theme.borderRadius.medium,
+    padding: theme.spacing.small,
+    marginVertical: theme.spacing.medium,
+    color: theme.colors.textPrimary,
+    backgroundColor: theme.colors.white
   },
+  buttonContainer: {
+    marginTop: theme.spacing.medium
+  },
+  bioLabel: {
+    fontStyle: 'italic',
+    color: theme.colors.textSecondary,
+    marginBottom: theme.spacing.small,
+    textAlign: 'left',
+    marginBottom: 1
+  }
 });
 
 export default UserProfile;

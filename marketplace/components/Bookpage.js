@@ -3,6 +3,8 @@ import { View, TextInput, Button, StyleSheet } from 'react-native';
 import { Picker } from '@react-native-picker/picker';
 import { getFirestore, collection, addDoc } from 'firebase/firestore';
 import { getAuth } from 'firebase/auth';
+import theme from '../styling/theme'
+
 
 const GEOCODING_API_KEY = 'AIzaSyCaeHkurWGN6xWRe3C52QT308uVijmhZYo';
 
@@ -78,24 +80,29 @@ const BookPage = () => {
     }
   };
 
+  console.log(theme.styles);
+
   return (
     <View style={styles.container}>
       <TextInput
         value={title}
         onChangeText={setTitle}
         placeholder="Book Title"
+        placeholderTextColor={theme.colors.textSecondary}
         style={styles.input}
-      />
+        />
       <TextInput
         value={price}
         onChangeText={setPrice}
         placeholder="Price"
+        placeholderTextColor={theme.colors.textSecondary}
         style={styles.input}
         keyboardType="numeric"
       />
       <Picker
         selectedValue={quality}
-        style={styles.input}
+        style={[styles.input, theme.styles.picker]}
+        itemStyle={theme.styles.pickerItem}
         onValueChange={(itemValue) => setQuality(itemValue)}
       >
         <Picker.Item label="Perfekt stand" value="Perfekt stand" />
@@ -107,9 +114,12 @@ const BookPage = () => {
         value={address}
         onChangeText={setAddress}
         placeholder="Address"
+        placeholderTextColor={theme.colors.textSecondary}
         style={styles.input}
-      />
-      <Button title="Add Book" onPress={handleSubmit} />
+        />
+      <View style={styles.buttonContainer}>
+        <Button title="Add Book" onPress={handleSubmit} color={theme.colors.primary} />
+      </View>
     </View>
   );
 };
@@ -117,13 +127,17 @@ const BookPage = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    padding: 20,
+    padding: theme.spacing.medium,
+    backgroundColor: theme.colors.background,
   },
   input: {
-    borderWidth: 1,
-    borderColor: 'gray',
-    padding: 10,
-    marginVertical: 10,
+    marginVertical: theme.spacing.small,
+    backgroundColor: theme.colors.white, 
+  },
+  buttonContainer: {
+    marginTop: theme.spacing.medium,
+    borderRadius: theme.borderRadius.medium,
+    overflow: 'hidden',
   },
 });
 
