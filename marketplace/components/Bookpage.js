@@ -5,9 +5,10 @@ import { getFirestore, collection, addDoc } from 'firebase/firestore';
 import { getAuth } from 'firebase/auth';
 import theme from '../styling/theme'
 
+// Fjerner min API-nøgle før jeg uploader på Github
+const GEOCODING_API_KEY = 'Geocoding API nøgle her'; // Dette vil gøre at Google Maps-funktionaliteten ikke vil fungere
 
-const GEOCODING_API_KEY = 'AIzaSyCaeHkurWGN6xWRe3C52QT308uVijmhZYo';
-
+// Dette stykke kode tager en text-string (adresse), og finder longitude og latitude på den givne adresse. Dermed kan man 
 const fetchCoordinates = async (address) => {
   const response = await fetch(
     `https://maps.googleapis.com/maps/api/geocode/json?address=${encodeURIComponent(address)}&key=${GEOCODING_API_KEY}`
