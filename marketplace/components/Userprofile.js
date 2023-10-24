@@ -11,7 +11,7 @@ const UserProfile = () => {
   const db = getFirestore();
 
   useEffect(() => {
-    const auth = getAuth();
+    const auth = getAuth(); // getAuth bruges til at skabe firebase brugergodkendelse
     onAuthStateChanged(auth, async (currentUser) => {
       if (currentUser) {
         setUser(currentUser);
@@ -68,6 +68,7 @@ return (
   </View>
 );
 };
+// Style og theme hentes fra /styling/theme
 
 const styles = StyleSheet.create({
   container: {
