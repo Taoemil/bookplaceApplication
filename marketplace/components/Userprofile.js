@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { View, Text, TextInput, Button, StyleSheet, Alert } from 'react-native'; // Added Alert here
+import { View, Text, TextInput, Button, StyleSheet, Alert } from 'react-native'; 
 import { getAuth, onAuthStateChanged } from 'firebase/auth';
 import { getFirestore, doc, setDoc, getDoc } from 'firebase/firestore';
 import theme from '../styling/theme'
@@ -31,7 +31,7 @@ const UserProfile = () => {
 
   const handleSave = async () => {
     console.log("handleSave called");  // Diagnostic log
-
+// Tjekker om uid er tilstede, for at bruger beskrivelsen knyttes til den bruger som er logget ind
     if (user) {
       const userRef = doc(db, 'users', user.uid);
       
