@@ -1,16 +1,17 @@
 // styling/theme.js
 
 // Design patterns placeres i seperat fil for at kunne sikre kontinuerligt mønster.
+// farve-koderne er genereret af chatGPT
 const theme = {
   colors: {
-    primary: '#4CAF50',   // A shade of light green for primary actions and highlights
-    secondary: '#A5D6A7', // A softer shade of green for secondary actions and backgrounds
-    background: '#E8F5E9', // Very light green background for general sections
-    textPrimary: '#2E7D32',  // Dark green for primary text against light backgrounds
-    textSecondary: '#78909C', // Grayish color for secondary or less important text
-    error: '#D32F2F',    // A standard error color, if needed.
-    white: '#FFFFFF',    // White color, can be used for cards or modal backgrounds.
-    black: '#000000',    // Black color, mainly for text.
+    primary: '#4CAF50',   // Lys grøn
+    secondary: '#A5D6A7', // blød grøn
+    background: '#E8F5E9', // Meget lys grøn til baggrund
+    textPrimary: '#2E7D32',  // Mørkegrøn til text
+    textSecondary: '#78909C', // Grå til sekundær tekst
+    error: '#D32F2F',    // Error-message farve
+    white: '#FFFFFF',    // Hvid    
+    black: '#000000',    // Sort
   },
 
   fontSize: {
