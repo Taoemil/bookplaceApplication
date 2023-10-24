@@ -10,19 +10,22 @@ const LoginScreen = ({ navigation }) => {
 
 
   
-  const auth = getAuth(firebaseApp);
+  const auth = getAuth(firebaseApp); // getAuth til firebase bruger authentication
+
+    // Funktion til at oprette en bruger med authentication (Email/password)
 
   const handleSignUp = () => {
     createUserWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
-        // Successfully signed up
+ // Success logged ind
         Alert.alert('Bruger oprettet!');
       })
       .catch(error => {
-        // Error signing up
+      // Fejl logging indv
         Alert.alert('Fejl', error.message);
       });
   }
+  // FUnktion til at logge ind med de oprettede bruger credentials (email/password)
 
   const handleLogin = () => {
     signInWithEmailAndPassword(auth, email, password)
@@ -66,6 +69,7 @@ const LoginScreen = ({ navigation }) => {
     </View>
   );
 }
+// Styles og theme fra /styling/theme
 
 const styles = StyleSheet.create({
   container: {
