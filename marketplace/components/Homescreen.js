@@ -30,7 +30,7 @@ const HomeScreen = ({ navigation }) => {
       </View>
     );
 }
-
+// Styles og theme fra /styling/theme.js
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -46,7 +46,7 @@ const styles = StyleSheet.create({
     color: theme.colors.textPrimary
   },
   buttonContainer: {
-    width: '110%',  // Adjust as needed for your design
+    width: '110%',  
     marginTop: theme.spacing.large
   }
 });
