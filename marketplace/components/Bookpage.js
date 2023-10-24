@@ -8,6 +8,10 @@ import theme from '../styling/theme'
 // Fjerner min API-nøgle før jeg uploader på Github
 const GEOCODING_API_KEY = 'AIzaSyCaeHkurWGN6xWRe3C52QT308uVijmhZYo'; // Denne nøgle er slettet for sikkerhed, og kan derfor ikke bruges
 
+/*
+Denne kode kommenteres på i rapporten
+*/
+
 // Dette stykke kode tager en text-string (adresse), og finder longitude og latitude på den givne adresse. Dermed kan man 
 const fetchCoordinates = async (address) => {
   const response = await fetch(
@@ -27,6 +31,8 @@ const fetchCoordinates = async (address) => {
   }
 };
 
+// Definer hvilke parametre en bog skal oprettes med
+
 const BookPage = () => {
   const [title, setTitle] = useState('');
   const [price, setPrice] = useState('');
@@ -37,7 +43,7 @@ const BookPage = () => {
   const auth = getAuth();
 
   const handleSubmit = async () => {
-    if (!title || !price || !quality || !address) {
+    if (!title || !price || !quality || !address) { //Sikre at ingen null-værdier godkendes
       console.log('Mangler værdier')
       alert('Venligst udfyld alle felter.');
       return;
@@ -51,7 +57,7 @@ const BookPage = () => {
     }
 
     try {
-      const { lat, lng } = await fetchCoordinates(address);
+      const { lat, lng } = await fetchCoordinates(address); //Geocoding, omskriver til lat, lng
       
       const bookData = { 
         title, 
