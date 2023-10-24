@@ -4,6 +4,7 @@ import { getFirestore, collection, query, getDocs } from 'firebase/firestore';
 import MapView, { Marker } from 'react-native-maps';
 import theme from '../styling/theme'
 
+  // henter books-tabellen
 
 const BookMaps = () => {
   const [books, setBooks] = useState([]);
